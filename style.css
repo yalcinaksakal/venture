@@ -299,7 +299,7 @@ section {
 .services {
   padding-top: 5px;
   width: 70%;
-  margin: 20px 5px;
+  margin: 20px 20px;
   transition: transform ease 0.3s;
 }
 .tourism {
@@ -318,6 +318,29 @@ section {
   align-items: center;
 }
 
+#contact {
+  background: rgba(128, 128, 128, 0.313);
+}
+
+#contact .fas {
+  margin-right: 20px;
+  font-size: 30px;
+}
+
+iframe {
+  width: 80%;
+  height: 350px;
+  border-radius: 10px;
+  margin: 50px 30px 20px 30px;
+  border: none;
+  box-shadow: 0 2px 10px 2px black;
+}
+
+.info {
+  margin: 20px 30px;
+  display: flex;
+  align-items: center;
+}
 footer {
   width: 100vw;
   background: rgb(47, 47, 47);
@@ -408,11 +431,17 @@ footer h2 {
     visibility: visible !important;
   }
 
+  #contact,
+  .members,
+  .services-container,
   nav,
   .nav-items {
     flex-direction: row;
   }
 
+  #contact {
+    align-items: center;
+  }
   nav a:hover {
     border-bottom: 2px solid var(--main-color);
     border-radius: 5px;
@@ -430,7 +459,7 @@ footer h2 {
   #vision {
     align-items: flex-start;
   }
-
+  iframe,
   #history div,
   #vision div {
     width: 50%;
@@ -440,12 +469,6 @@ footer h2 {
     align-self: flex-end;
   }
 
-  .members {
-    flex-direction: row;
-  }
-  .services-container {
-    flex-direction: row;
-  }
   .services {
     width: 30%;
   }
