@@ -17,15 +17,25 @@ function toggleNav() {
 }
 //event listeners
 document.addEventListener("click", e => {
+  if (!e.target.closest(".companies")) e.preventDefault();
   const menuBarsClicked = e.target.closest(".menu-bars");
   if (menuBarsClicked) {
     toggleNav();
     return;
   } else if (!e.target.closest(".navigation") && !backDrop.hidden) toggleNav();
-  const logo = e.target.closest(".logo");
-  if (logo) {
+
+  if (e.target.closest(".logo")) {
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (!backDrop.hidden) toggleNav();
+    return;
+  }
+  const navItem = e.target.closest(".nav-item");
+
+  if (navItem) {
+    document
+      .getElementById(navItem.dataset.scroll)
+      .scrollIntoView({ behavior: "smooth" });
+    toggleNav();
     return;
   }
 });

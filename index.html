@@ -18,11 +18,13 @@
     <nav class="navigation">
       <img class="logo" src="./images/logo.png" alt="black logo" title="HOME" />
       <div class="nav-items">
-        <a href="#">About</a>
-        <a href="#">Vision & Mission</a>
-        <a href="#">Board of Directors</a>
-        <a href="#">Services & Products</a>
-        <a href="#">Contact</a>
+        <a class="nav-item" data-scroll="about" href="#">About</a>
+        <a class="nav-item" data-scroll="vision" href="#">Vision & Mission</a>
+        <a class="nav-item" data-scroll="board" href="#">Board of Directors</a>
+        <a class="nav-item" data-scroll="services" href="#"
+          >Services & Products</a
+        >
+        <a class="nav-item" data-scroll="contact" href="#">Contact</a>
       </div>
     </nav>
     <header>
@@ -33,11 +35,30 @@
       <div class="bar2"></div>
       <div class="bar3"></div>
     </div>
-    <section></section>
-    <section></section>
-    <section></section>
-    <section></section>
-    <section></section>
+    <section id="about"></section>
+    <section id="vision"></section>
+    <section id="board"></section>
+    <section id="services"></section>
+    <section id="contact"></section>
+    <footer>
+      <h1>VENTURE GROUP</h1>
+      <div class="companies">
+        <a href="https://greeceferries.com/" target="_blank">
+          <img
+            src="./images/greece_ferries_white_logo.png"
+            alt="Greece Ferries"
+        /></a>
+        <a href="https://korendy.gr/" target="_blank">
+          <img src="./images/korendy_logo_white.png" alt="Korendy"
+        /></a>
+        <img
+          class="logo"
+          src="./images/logo-concultancy.png"
+          alt="consultancy"
+        />
+      </div>
+      <p>Copyright &copy; 2021 by VENTURE. All rights reserved.</p>
+    </footer>
     <div class="back-drop" hidden></div>
   </body>
 </html>
