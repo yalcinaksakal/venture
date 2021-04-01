@@ -95,6 +95,7 @@ header {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  border-bottom: 5px solid rgb(247, 51, 51);
 }
 
 header img {
@@ -105,6 +106,25 @@ header img {
   z-index: 2;
   cursor: pointer;
 }
+header div {
+  position: absolute;
+  width: 100%;
+  top: 45%;
+}
+
+h1 {
+  width: 100vw;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  font-weight: 500;
+  padding: 15px 0;
+  border-bottom: 10px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #0890ff00, var(--main-color));
+  background: rgba(61, 61, 61, 0.442);
+}
+
 nav img:hover,
 header img:hover {
   transform: scale(1.2);
@@ -112,16 +132,111 @@ header img:hover {
 
 section {
   width: 100vw;
-  height: 100vh;
-  background: rgb(93, 92, 92);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid rgb(240, 236, 135);
+}
+
+#about {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.8)
+    ),
+    url(images/about.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 50px 0;
+}
+
+#about h1 {
+  background: none;
+  text-align: left;
+  padding-left: 40px;
+}
+
+.bullet {
+  width: 90%;
+  margin: 10px 30px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+#history {
+  background-image: url(images/history.jpg);
+  background-size: cover;
+  background-position: center;
+  align-items: flex-start;
+  color: white;
+  padding: 50px 0;
+}
+
+#history div {
+  margin: 10px 30px;
+  width: 70%;
+  background: rgba(0, 0, 0, 0.721);
+  border-radius: 10px;
+}
+
+#history h1 {
+  width: 90%;
+  margin-left: 20px;
+  text-align: left;
+}
+#history p {
+  margin: 20px;
+  text-align: justify;
+}
+
+#vision {
+  height: 99vh;
+  background-image: url(images/vmision.jpg);
+  background-size: cover;
+  background-position: center;
+  justify-content: space-between;
+  color: white;
+  padding: 50px 0;
+}
+
+#vision div {
+  margin: 10px 30px;
+  width: 80%;
+  background: rgba(0, 0, 0, 0.721);
+  border-radius: 10px;
+}
+#vision h1 {
+  width: 90%;
+  margin-left: 20px;
+  text-align: left;
+}
+#vision p {
+  margin: 20px;
+  text-align: justify;
+}
+
+.mission {
+  justify-self: flex-end;
+  bottom: 50px;
+}
+
+.fas {
+  color: var(--main-color);
+  font-size: 20px;
+  margin-right: 5px;
 }
 
 footer {
+  width: 100vw;
   background: rgb(47, 47, 47);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 footer img {
-  width: 120px;
+  width: 100px;
   margin: 20px;
   transition: transform ease 0.3s;
   cursor: pointer;
@@ -130,7 +245,8 @@ footer img:hover {
   transform: scale(1.2);
 }
 
-footer p, footer h1 {
+footer p,
+footer h2 {
   color: white;
   text-align: center;
   width: 100%;
@@ -138,9 +254,12 @@ footer p, footer h1 {
   font-size: 10px;
   font-weight: 500;
 }
-footer h1 {font-size: 20px;}
+footer h2 {
+  font-size: 20px;
+}
 
 .companies {
+  width: 80%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -216,10 +335,26 @@ footer h1 {font-size: 20px;}
   .back-drop {
     visibility: hidden !important;
   }
+
+  #vision {
+    align-items: flex-start;
+  }
+
+  #history div,
+  #vision div {
+    width: 50%;
+  }
+
+  .mission {
+    align-self: flex-end;
+  }
 }
 
 @media (max-width: 500px) {
   .companies {
+    flex-direction: column;
+  }
+  section {
     flex-direction: column;
   }
 }
