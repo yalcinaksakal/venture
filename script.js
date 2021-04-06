@@ -2,13 +2,21 @@ const menuBars = document.getElementById("menu-bars");
 const navEl = document.getElementsByTagName("nav")[0];
 const backDrop = document.querySelector(".back-drop");
 const mainLogo = document.getElementById("main-logo");
+const cvEl = document.querySelector(".cv");
 
+const arrayCV = [
+  "",
+  " 111111Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil, iste",
+  " 222222minus eaque tempore magni soluta provident laborum debitis inventore",
+  "33333 praesentium non ea, eos quae distinctio? Dolorem suscipit iusto",
+  " 444444distinctio? Quis!",
+];
 const scrollableSections = [
   "header",
   "about",
   "vision",
   "board",
-  "companies",
+  "footer1",
   "brands",
   "services",
   "contact",
@@ -16,6 +24,7 @@ const scrollableSections = [
 ];
 let currentView = 0;
 let touchStart;
+let chosen = "1";
 
 function toggleNav() {
   menuBars.classList.toggle("change");
@@ -61,6 +70,14 @@ document.addEventListener("click", e => {
       section => section === navItem.dataset.scroll
     );
     return;
+  }
+
+  const person = e.target.closest(".person");
+  if (person) {
+    person.classList.add("chosen");
+    document.getElementById(chosen).classList.remove("chosen");
+    chosen = person.id;
+    cvEl.textContent = arrayCV[chosen];
   }
 });
 

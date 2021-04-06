@@ -11,9 +11,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-a {
-  outline: none;
-}
 
 body {
   background: white;
@@ -159,9 +156,9 @@ section {
   background: rgba(61, 61, 61, 0.598);
 }
 
-#about p{
-  color:white;
-  padding: 10px ;
+#about p {
+  color: white;
+  padding: 10px;
   font-size: 16px;
 }
 
@@ -212,32 +209,13 @@ section {
   background: whitesmoke;
 }
 
-#companies {
-  background: white;
-}
-.companies-section {
-  width: 100%;
-}
-
-.companies-section img {
-  background: rgb(255, 167, 3);
-  width: 150px;
-  margin: 20px 45px;
-  padding: 50px 10px;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px 2px rgb(122, 80, 3);
-  cursor: pointer;
-  transition: transform ease 0.3s;
-}
-
-.companies-section img:hover {
-  transform: scale(1.1);
-}
-
 #brands {
   background: whitesmoke;
 }
 
+.brands {
+  width: 100%;
+}
 .brand {
   margin: 30px 5%;
   width: 20%;
@@ -246,21 +224,21 @@ section {
 
 .brand img {
   width: 100%;
+  max-width: 100px;
   background: white;
   border-radius: 60%;
   box-shadow: 0 1px 3px 2px black;
   transition: transform ease 0.3s;
 }
 
-.brand img:hover {
-  transform: scale(1.1);
-}
 .brand p {
   width: 100%;
+  max-width: 100px;
   margin-top: 10px;
   padding: 0;
   text-align: center;
 }
+#footer1 h1,
 #services h1,
 #board h1,
 #companies h1,
@@ -268,32 +246,64 @@ section {
   padding-top: 50px;
 }
 
-.person {
-  display: inline-block;
-  width: 40%;
-  margin: 5px 4vw;
-  padding: 5px;
-  border-radius: 10px;
+.board {
+  margin: 20px 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+.persons {
+  width: 100%;
+  display: flex;
+}
 
-  transition: transform ease 0.3s;
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  padding: 20px 0;
+  background: white;
 }
 
 .person img {
-  width: 20%;
+  width: 50%;
   margin: 5px 0;
   border-radius: 50%;
   background: gray;
+  transition: transform ease 0.3s;
 }
 .person p {
-  margin: 5px 0;
+  text-align: center;
+  font-size: 15px;
+}
+.cv {
+  width: 100%;
+  height: 50vh;
+  padding: 20px;
+  background: rgba(172, 255, 47, 0.2);
+}
+.chosen {
+  background: rgba(172, 255, 47, 0.2);
+}
+
+#footer1 {
+  background: white;
+  height: 100vh;
+}
+#footer1 .companies {
+  height: calc(100vh - 125px);
+  width: 100%;
+  background: rgba(255, 99, 8, 0.496);
+  justify-content: center;
 }
 
 .vm {
   transition: transform ease 0.3s;
 }
-
+.brand img:hover,
 footer img:hover,
-.person:hover,
+.person img:hover,
 .vm:hover,
 .services:hover {
   transform: scale(1.1);
@@ -499,13 +509,8 @@ footer h2 {
   .services {
     width: 30%;
   }
-  .companies {
+  #footer .companies {
     flex-direction: row;
-  }
-  .companies-section img {
-    width: 200px;
-    margin: 50px;
-    padding: 80px 40px;
   }
 }
 
@@ -519,7 +524,7 @@ footer h2 {
   .brand p {
     font-size: 10px;
   }
-  .person {
-    width: 91%;
+  .person p {
+    font-size: 13px;
   }
 }
