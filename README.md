@@ -1,1 +1,1 @@
-https://yalcinaksakal.github.io/venture/
+https://venture100.netlify.app/
