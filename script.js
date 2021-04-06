@@ -3,21 +3,19 @@ const navEl = document.getElementsByTagName("nav")[0];
 const backDrop = document.querySelector(".back-drop");
 const mainLogo = document.getElementById("main-logo");
 
-
-
-// const scrollableSections = [
-//   "header",
-//   "about",
-//   "history",
-//   "vision",
-//   "board",
-//   "companies",
-//   "brands",
-//   "services",
-//   "contact",
-//   "footer",
-// ];
-// let currentView = 0;
+const scrollableSections = [
+  "header",
+  "about",
+  "vision",
+  "board",
+  "companies",
+  "brands",
+  "services",
+  "contact",
+  "footer",
+];
+let currentView = 0;
+let touchStart;
 
 function toggleNav() {
   menuBars.classList.toggle("change");
@@ -57,29 +55,38 @@ document.addEventListener("click", e => {
     document
       .getElementById(navItem.dataset.scroll)
       .scrollIntoView({ behavior: "smooth" });
-    toggleNav();
+    toggleNav(navItem.dataset.scroll);
+
+    currentView = scrollableSections.findIndex(
+      section => section === navItem.dataset.scroll
+    );
     return;
   }
 });
 
-// const scrollHandler = direction => {
-//   currentView += direction;
-//   if (currentView < 0) currentView = 0;
-//   if (currentView === scrollableSections.length)
-//     currentView = scrollableSections.length - 1;
-//   if (!currentView) window.scrollTo({ top: 0, behavior: "smooth" });
-//   else
-//     document
-//       .getElementById(scrollableSections[currentView])
-//       .scrollIntoView({ behavior: "smooth" });
-// };
+const scrollHandler = direction => {
+  currentView += direction;
+  if (currentView < 0) currentView = 0;
+  if (currentView === scrollableSections.length)
+    currentView = scrollableSections.length - 1;
 
-// document.addEventListener("keydown", e => {
-//   if (e.key === "PageDown" || e.key === "ArrowDown") scrollHandler(1);
-//   if (e.key === "PageUp" || e.key === "ArrowUp") scrollHandler(-1);
-// });
+  document.getElementById(scrollableSections[currentView]).scrollIntoView();
+};
 
-// document.addEventListener("wheel", e => {
-//   if (e.deltaY > 0) scrollHandler(1);
-//   else scrollHandler(-1);
-// });
+document.addEventListener("keydown", e => {
+  if (e.key === "PageDown" || e.key === "ArrowDown") scrollHandler(1);
+  if (e.key === "PageUp" || e.key === "ArrowUp") scrollHandler(-1);
+});
+
+document.addEventListener("wheel", e => {
+  if (e.deltaY > 0) scrollHandler(1);
+  else scrollHandler(-1);
+});
+document.addEventListener("touchstart", e => {
+  touchStart = e.changedTouches[0].clientY;
+});
+
+document.addEventListener("touchend", e => {
+  if (e.changedTouches[0].clientY - touchStart > 0) scrollHandler(1);
+  if (e.changedTouches[0].clientY - touchStart < 0) scrollHandler(-1);
+});

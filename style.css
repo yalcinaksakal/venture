@@ -19,7 +19,7 @@ body {
   background: white;
   font-family: "Roboto", "Arial", sans-serif;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 nav {
@@ -46,15 +46,7 @@ nav {
 .slide-right {
   transform: translateX(260px);
 }
-.nav-panel {
-  background: rgba(255, 255, 255, 0.2);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 50px;
-  z-index: 2;
-}
+
 nav img {
   width: 40px;
   margin-left: 10px;
@@ -95,19 +87,11 @@ nav a:hover {
 }
 
 header {
-  margin-top: 50px;
   width: 100vw;
-  height: calc(100vh - 50px);
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.7)
-    ),
-    url(images/profile.jpg);
+  height: 100vh;
+  background-image: url(images/profile.jpg);
   background-size: cover;
   background-position: center;
-
-  border-bottom: 5px solid rgb(247, 51, 51);
 }
 
 header img {
@@ -119,15 +103,18 @@ header img {
   cursor: pointer;
 }
 header div {
+  background: rgba(34, 33, 33, 0.544);
   position: absolute;
   width: 100%;
   top: 30%;
+  padding-bottom: 20px;
 }
 
 header p {
   color: white;
   text-align: center;
   font-size: 20px;
+  font-weight: bold;
   margin-top: 20px;
 }
 
@@ -151,6 +138,7 @@ header img:hover {
 
 section {
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -158,19 +146,26 @@ section {
 }
 
 #about {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.8)
-    ),
-    url(images/about.jpg);
+  background-image: url(images/about.jpg);
   background-size: cover;
   background-position: center;
   padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#about div,
+#about h1 {
+  background: rgba(61, 61, 61, 0.598);
+}
+
+#about p{
+  color:white;
+  padding: 10px ;
+  font-size: 16px;
 }
 
 #about h1 {
-  background: none;
   text-align: left;
   padding-left: 40px;
 }
@@ -181,31 +176,6 @@ section {
   display: flex;
   align-items: center;
   color: white;
-}
-
-#history {
-  background-image: url(images/history.jpg);
-  background-size: cover;
-  background-position: center;
-  align-items: flex-start;
-  color: white;
-  padding: 50px 0;
-}
-
-#history div {
-  margin: 10px 30px;
-  width: 70%;
-  background: rgba(0, 0, 0, 0.721);
-  border-radius: 10px;
-}
-
-#history h1 {
-  width: 90%;
-  margin-left: 20px;
-  text-align: left;
-}
-#history p {
-  margin: 20px;
 }
 
 #vision {
@@ -518,7 +488,6 @@ footer h2 {
     align-items: flex-start;
   }
   iframe,
-  #history div,
   #vision div {
     width: 50%;
   }
