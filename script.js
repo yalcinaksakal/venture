@@ -68,6 +68,11 @@ document.addEventListener("click", e => {
   } else if (!e.target.closest(".navigation") && !backDrop.hidden) toggleNav();
 
   if (e.target.closest(".logo")) {
+    document.getElementById(scrollableSections[currentView]).style.opacity =
+      "0";
+    currentView = 0;
+    document.getElementById(scrollableSections[currentView]).style.opacity =
+      "1";
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (!backDrop.hidden) toggleNav();
     return;
@@ -80,9 +85,13 @@ document.addEventListener("click", e => {
       .scrollIntoView({ behavior: "smooth" });
     toggleNav(navItem.dataset.scroll);
     removeDotCircle();
+    document.getElementById(scrollableSections[currentView]).style.opacity =
+      "0";
     currentView = scrollableSections.findIndex(
       section => section === navItem.dataset.scroll
     );
+    document.getElementById(scrollableSections[currentView]).style.opacity =
+      "1";
     addDotCircle();
     return;
   }
@@ -98,13 +107,11 @@ document.addEventListener("click", e => {
 
 const scrollHandler = direction => {
   removeDotCircle();
-  // if (currentView > 0 && currentView < scrollableSections.length - 1)
   document.getElementById(scrollableSections[currentView]).style.opacity = "0";
   currentView += direction;
   if (currentView < 0) currentView = 0;
   if (currentView === scrollableSections.length)
     currentView = scrollableSections.length - 1;
-  // if (currentView > 0 && currentView < scrollableSections.length - 1)
   document.getElementById(scrollableSections[currentView]).style.opacity = "1";
   document.getElementById(scrollableSections[currentView]).scrollIntoView();
   addDotCircle();
