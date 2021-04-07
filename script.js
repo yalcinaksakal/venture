@@ -25,6 +25,7 @@ const scrollableSections = [
 let currentView = 0;
 let touchStart;
 let chosen = "1";
+let disableScroll = false;
 
 const removeDotCircle = () => {
   const icon = document.getElementById(`icon-${currentView}`);
@@ -61,6 +62,7 @@ function toggleNav() {
 //event listeners
 document.addEventListener("click", e => {
   if (!e.target.closest(".companies")) e.preventDefault();
+
   const menuBarsClicked = e.target.closest(".menu-bars");
   if (menuBarsClicked) {
     toggleNav();
@@ -75,9 +77,10 @@ document.addEventListener("click", e => {
   const navItem = e.target.closest(".nav-item");
 
   if (navItem) {
+    disableScrollHandler();
     document
       .getElementById(navItem.dataset.scroll)
-      .scrollIntoView({ behavior: "smooth" });
+      .scrollIntoView({ top: 0, behavior: "smooth" });
     toggleNav(navItem.dataset.scroll);
     removeDotCircle();
     currentView = scrollableSections.findIndex(
@@ -96,14 +99,25 @@ document.addEventListener("click", e => {
   }
 });
 
+const disableScrollHandler = () => {
+  if (!disableScroll) {
+    disableScroll = true;
+    setTimeout(() => (disableScroll = false), 600);
+  }
+};
+
 const scrollHandler = direction => {
+  if (disableScroll) return;
   removeDotCircle();
   currentView += direction;
   if (currentView < 0) currentView = 0;
   if (currentView === scrollableSections.length)
     currentView = scrollableSections.length - 1;
 
-  document.getElementById(scrollableSections[currentView]).scrollIntoView();
+  document
+    .getElementById(scrollableSections[currentView])
+    .scrollIntoView({ top: 0, behavior: "smooth" });
+  disableScrollHandler();
   addDotCircle();
 };
 
@@ -121,6 +135,7 @@ document.addEventListener("touchstart", e => {
 });
 
 document.addEventListener("touchend", e => {
-  if (e.changedTouches[0].clientY - touchStart > 0) scrollHandler(1);
-  if (e.changedTouches[0].clientY - touchStart < 0) scrollHandler(-1);
+  if (disableScroll) return;
+  if (e.changedTouches[0].clientY - touchStart > 0) scrollHandler(-1);
+  if (e.changedTouches[0].clientY - touchStart < 0) scrollHandler(1);
 });
