@@ -98,11 +98,14 @@ document.addEventListener("click", e => {
 
 const scrollHandler = direction => {
   removeDotCircle();
+  // if (currentView > 0 && currentView < scrollableSections.length - 1)
+  document.getElementById(scrollableSections[currentView]).style.opacity = "0";
   currentView += direction;
   if (currentView < 0) currentView = 0;
   if (currentView === scrollableSections.length)
     currentView = scrollableSections.length - 1;
-
+  // if (currentView > 0 && currentView < scrollableSections.length - 1)
+  document.getElementById(scrollableSections[currentView]).style.opacity = "1";
   document.getElementById(scrollableSections[currentView]).scrollIntoView();
   addDotCircle();
 };
