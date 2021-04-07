@@ -26,6 +26,20 @@ let currentView = 0;
 let touchStart;
 let chosen = "1";
 
+const removeDotCircle = () => {
+  const icon = document.getElementById(`icon-${currentView}`);
+  icon.classList.remove("fa-dot-circle");
+  icon.classList.add("fa-circle");
+  icon.style.fontSize = "10px";
+};
+const addDotCircle = () => {
+  const icon = document.getElementById(`icon-${currentView}`);
+  icon.classList.remove("fa-circle");
+  icon.classList.add("fa-dot-circle");
+  icon.style.fontSize = "15px";
+};
+addDotCircle();
+
 function toggleNav() {
   menuBars.classList.toggle("change");
 
@@ -65,10 +79,11 @@ document.addEventListener("click", e => {
       .getElementById(navItem.dataset.scroll)
       .scrollIntoView({ behavior: "smooth" });
     toggleNav(navItem.dataset.scroll);
-
+    removeDotCircle();
     currentView = scrollableSections.findIndex(
       section => section === navItem.dataset.scroll
     );
+    addDotCircle();
     return;
   }
 
@@ -82,12 +97,14 @@ document.addEventListener("click", e => {
 });
 
 const scrollHandler = direction => {
+  removeDotCircle();
   currentView += direction;
   if (currentView < 0) currentView = 0;
   if (currentView === scrollableSections.length)
     currentView = scrollableSections.length - 1;
 
   document.getElementById(scrollableSections[currentView]).scrollIntoView();
+  addDotCircle();
 };
 
 document.addEventListener("keydown", e => {
