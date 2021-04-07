@@ -25,7 +25,6 @@ const scrollableSections = [
 let currentView = 0;
 let touchStart;
 let chosen = "1";
-let disableScroll = false;
 
 const removeDotCircle = () => {
   const icon = document.getElementById(`icon-${currentView}`);
@@ -62,7 +61,6 @@ function toggleNav() {
 //event listeners
 document.addEventListener("click", e => {
   if (!e.target.closest(".companies")) e.preventDefault();
-
   const menuBarsClicked = e.target.closest(".menu-bars");
   if (menuBarsClicked) {
     toggleNav();
@@ -77,10 +75,9 @@ document.addEventListener("click", e => {
   const navItem = e.target.closest(".nav-item");
 
   if (navItem) {
-    disableScrollHandler();
     document
       .getElementById(navItem.dataset.scroll)
-      .scrollIntoView({ top: 0, behavior: "smooth" });
+      .scrollIntoView({ behavior: "smooth" });
     toggleNav(navItem.dataset.scroll);
     removeDotCircle();
     currentView = scrollableSections.findIndex(
@@ -92,32 +89,21 @@ document.addEventListener("click", e => {
 
   const person = e.target.closest(".person");
   if (person) {
-    person.classList.add("chosen");
     document.getElementById(chosen).classList.remove("chosen");
+    person.classList.add("chosen");
     chosen = person.id;
     cvEl.textContent = arrayCV[chosen];
   }
 });
 
-const disableScrollHandler = () => {
-  if (!disableScroll) {
-    disableScroll = true;
-    setTimeout(() => (disableScroll = false), 600);
-  }
-};
-
 const scrollHandler = direction => {
-  if (disableScroll) return;
   removeDotCircle();
   currentView += direction;
   if (currentView < 0) currentView = 0;
   if (currentView === scrollableSections.length)
     currentView = scrollableSections.length - 1;
 
-  document
-    .getElementById(scrollableSections[currentView])
-    .scrollIntoView({ top: 0, behavior: "smooth" });
-  disableScrollHandler();
+  document.getElementById(scrollableSections[currentView]).scrollIntoView();
   addDotCircle();
 };
 
@@ -135,7 +121,6 @@ document.addEventListener("touchstart", e => {
 });
 
 document.addEventListener("touchend", e => {
-  if (disableScroll) return;
-  if (e.changedTouches[0].clientY - touchStart > 0) scrollHandler(-1);
-  if (e.changedTouches[0].clientY - touchStart < 0) scrollHandler(1);
+  if (e.changedTouches[0].clientY - touchStart > 5) scrollHandler(1);
+  if (e.changedTouches[0].clientY - touchStart < -5) scrollHandler(-1);
 });
