@@ -70,7 +70,9 @@ document.addEventListener("click", e => {
   if (e.target.closest(".logo")) {
     document.getElementById(scrollableSections[currentView]).style.opacity =
       "0";
+    removeDotCircle();
     currentView = 0;
+    addDotCircle();
     document.getElementById(scrollableSections[currentView]).style.opacity =
       "1";
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -131,6 +133,6 @@ document.addEventListener("touchstart", e => {
 });
 
 document.addEventListener("touchend", e => {
-  if (e.changedTouches[0].clientY - touchStart > 5) scrollHandler(1);
-  if (e.changedTouches[0].clientY - touchStart < -5) scrollHandler(-1);
+  if (e.changedTouches[0].clientY - touchStart > 5) scrollHandler(-1);
+  if (e.changedTouches[0].clientY - touchStart < -5) scrollHandler(1);
 });
