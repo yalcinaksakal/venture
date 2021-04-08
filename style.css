@@ -90,7 +90,7 @@ header {
   background-size: cover;
   background-position: center;
   opacity: 1;
-  transition: opacity ease 0.6s;
+  transition: opacity ease 1s;
 }
 
 header img {
@@ -121,7 +121,7 @@ h1 {
   width: 100vw;
   text-align: center;
   color: white;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
   padding: 15px 0;
   border-bottom: 10px solid;
@@ -143,7 +143,7 @@ section {
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid rgb(240, 236, 135);
-  transition: opacity ease 0.6s;
+  transition: opacity ease 1s;
 }
 
 #about {
@@ -294,10 +294,10 @@ section {
   background: white;
   height: 100vh;
   opacity: 0;
-  transition: opacity ease 0.6s;
+  transition: opacity ease 1s;
 }
 #footer1 .companies {
-  height: calc(100vh - 125px);
+  height: calc(100vh - 100px);
   width: 100%;
   background: rgba(255, 99, 8, 0.496);
   justify-content: center;
@@ -310,7 +310,7 @@ section {
 footer img:hover,
 .person img:hover,
 .vm:hover,
-.services:hover {
+.services div:hover {
   transform: scale(1.1);
 }
 
@@ -329,17 +329,26 @@ footer img:hover,
 
 .services {
   padding-top: 5px;
-  width: 70%;
-  margin: 20px 20px;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0 20px;
+  box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.394);
+  color: white;
+}
+
+.services div {
   transition: transform ease 0.3s;
 }
 .tourism {
-  border-top: 4px solid lime;
+  background: rgb(16, 199, 16);
+  border-top: 4px solid rgb(36, 135, 36);
 }
 .care {
+  background: rgb(133, 95, 38);
   border-top: 4px solid rgb(216, 155, 63);
 }
 .consulting {
+  background: rgb(19, 91, 162);
   border-top: 4px solid var(--main-color);
 }
 .products {
@@ -360,7 +369,7 @@ footer img:hover,
 
 iframe {
   width: 80%;
-  height: 60vh;
+  height: 50vh;
   border-radius: 10px;
   margin: 60px 30px;
   border: none;
@@ -374,10 +383,12 @@ iframe {
 }
 footer {
   width: 100vw;
+  height: 100vh;
   background: rgb(47, 47, 47);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 .companies {
   width: 90%;
@@ -405,8 +416,9 @@ footer h2 {
   font-weight: 500;
 }
 footer h2 {
-  font-size: 20px;
+  font-size: 15px;
 }
+
 .dots {
   margin: 0;
   position: fixed;
@@ -535,6 +547,9 @@ footer h2 {
   }
   #footer .companies {
     flex-direction: row;
+  }
+  footer {
+    height: auto;
   }
 }
 
