@@ -328,9 +328,9 @@ footer img:hover,
 }
 
 .services {
-  padding-top: 5px;
+  padding-top: 15px;
   width: 100%;
-  margin: 20px 0;
+  margin: 25px 0;
   padding: 0 20px;
   box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.394);
   color: white;
@@ -351,9 +351,13 @@ footer img:hover,
   background: rgb(19, 91, 162);
   border-top: 4px solid var(--main-color);
 }
+.services h2 {
+  padding: 10px 0;
+}
+
 .products {
   width: 90%;
-  margin: 10px;
+  padding: 5px 0;
   display: flex;
   align-items: center;
 }
@@ -533,17 +537,21 @@ footer h2 {
   #vision {
     align-items: flex-start;
   }
-  iframe,
-  #vision div {
+  iframe {
     width: 50%;
   }
-
+  #vision div {
+    width: 40%;
+    margin: 50px;
+  }
   .mission {
     align-self: flex-end;
   }
 
   .services {
     width: 30%;
+    margin: 60px 10px;
+    border-radius: 10px;
   }
   #footer .companies {
     flex-direction: row;
